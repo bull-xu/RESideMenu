@@ -67,6 +67,7 @@
 #if __IPHONE_8_0
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     if (self.contentViewStoryboardID) {
         self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:self.contentViewStoryboardID];
     }
@@ -167,7 +168,7 @@
         } completion:^(BOOL finished) {
             [self hideViewController:self.contentViewController];
             [contentViewController didMoveToParentViewController:self];
-            _contentViewController = contentViewController;
+            self->_contentViewController = contentViewController;
 
             [self statusBarNeedsAppearanceUpdate];
             [self updateContentViewShadow];
@@ -782,7 +783,7 @@
     return self.contentViewController.shouldAutorotate;
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
 {
     if (self.visible) {
         self.menuViewContainer.bounds = self.view.bounds;
