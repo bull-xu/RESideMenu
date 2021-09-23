@@ -783,7 +783,7 @@
     return self.contentViewController.shouldAutorotate;
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     if (self.visible) {
         self.menuViewContainer.bounds = self.view.bounds;
