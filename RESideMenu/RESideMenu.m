@@ -362,6 +362,9 @@
 
 - (void)hideViewController:(UIViewController *)viewController
 {
+    if (!viewController) {
+        return;
+    }
     [viewController willMoveToParentViewController:nil];
     [viewController.view removeFromSuperview];
     [viewController removeFromParentViewController];
@@ -764,6 +767,10 @@
     }
     [self hideViewController:_rightMenuViewController];
     _rightMenuViewController = rightMenuViewController;
+
+    if (!self.rightMenuViewController) {
+        return;
+    }
     
     [self addChildViewController:self.rightMenuViewController];
     self.rightMenuViewController.view.frame = self.view.bounds;
